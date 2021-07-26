@@ -1,0 +1,82 @@
+{
+	"id": 0,
+	"output": "I coudln't understand. lets try this again from the start",
+	"children": [
+		{
+			"id": 1,
+			"tag": "greeting",
+			"patterns": ["Hi", "Hey", "How are you", "Is anyone there?", "Hello", "Good day"],
+			"responses": ["Im good, how are you today?", "I'm Great, and you?"]
+		},
+		{
+			"id": 2,
+			"tag": "goodbye",
+			"patterns": ["Bye", "See you later", "Goodbye"],
+			"responses": ["Bye Bye!", "Have a nice day!", "Good luck!"]
+		},
+		{
+			"id": 3,
+			"tag": "dbaas",
+			"patterns": [
+				"I have a problem in my db",
+				"there are too many sessions",
+				"I can't connect to my db",
+				"My queries dont work",
+				"Can you offer me visualization tools?",
+				"I want to migrate to mongo",
+				"I am having problems with postgres",
+				"Pgadmin wont let me connect",
+				"I want to switchover to another site",
+				"I want to create a new cluster"
+			],
+			"output": "Please specify the technology of your cluster (Mongo/Postgres)",
+			"children": [
+				{
+					"id": 4,
+					"tag": "postgres",
+					"patterns": ["Pgadmin support", "PGSQL", "I am having problems with postgres"],
+					"output": "Just use PGadmin",
+					"redirect": 5
+				},
+				{
+					"id": 5,
+					"tag": "mongo",
+					"patterns": ["I want to migrate to mongo", "mongo", "MongoDB", "document", "mongoose"],
+					"output": "Just use Mongod"
+				}
+			]
+		},
+		{
+			"id": 6,
+			"tag": "openshift",
+			"patterns": [
+				"I have a problem in ocp4",
+				"openshift marganit is down",
+				"I want to connect my cluster to splunk",
+				"I can't rollout my pod"
+			],
+			"output": "Please specify OCP version",
+			"children": [
+				{
+					"id": 7,
+					"tag": "openshift",
+					"patterns": ["I have a problem in ocp4", "openshift 4", "Openshift four"]
+				},
+				{}
+			]
+		},
+		{
+			"tag": "general",
+			"patterns": ["My ticket is unanswered", "No one responds to my ticket", "Who should I call?", "Are you cash only?"],
+			"responses": ["We accept VISA, Mastercard and Paypal", "We accept most major credit cards, and Paypal"]
+		},
+		{
+			"tag": "funny",
+			"patterns": ["Tell me a joke!", "Tell me something funny!", "Do you know a joke?"],
+			"responses": [
+				"Why did the hipster burn his mouth? He drank the coffee before it was cool.",
+				"What did the buffalo say when his son left for college? Bison."
+			]
+		}
+	]
+}
