@@ -1,0 +1,76 @@
+{
+    "teams": [
+        {
+            "key": "openshift",
+            "value": [
+                {
+                    "key": "On Board",
+                    "value": [
+                        {
+                            "key": "Introduction to Openshift",
+                            "value": [
+                                {
+                                    "key": "Why To Use Openshift",
+                                    "value": {
+                                        "info": "Using Openshift platform helps you \n 1. Reduce Significantly the development procedure time \n 2. More convinent way to run multi-service application architecture \n 3. Integration with great devops tools for automated piplines.",
+                                        "links": [
+                                            "https://shadow-soft.com/openshift-benefits/"
+                                        ]
+                                    },
+                                    "score": 1
+                                },
+                                {
+                                    "key": "What is Openshift",
+                                    "value": {
+                                        "info": "Openshift is container as a service platform that helps you mange your containers operations. \n Working with docker? thinking of change your architecture to continer based? Openshift is for you.",
+                                        "links": [
+                                            "https://status.co.il/openshift-%D7%94%D7%A7%D7%95%D7%91%D7%A8%D7%A0%D7%98%D7%99%D7%A1-%D7%A9%D7%9C-%D7%A8%D7%93-%D7%94%D7%90%D7%98-%D7%A2%D7%9D-%D7%94%D7%A4%D7%A0%D7%99%D7%9D-%D7%A7%D7%93%D7%99%D7%9E%D7%94/"
+                                        ]
+                                    },
+                                    "score": 2
+                                },
+                                {
+                                    "key": "Prerequisites",
+                                    "value": [
+                                        
+                                    ],
+                                    "score": 3
+                                }
+                            ],
+                            "score": 1
+                        },
+                        {
+                            "key": "Creating a Project",
+                            "value": [
+                                
+                            ],
+                            "score": 2
+                        },
+                        {
+                            "key": "Request Resources",
+                            "value": [
+                                
+                            ],
+                            "score": 3
+                        }
+                    ],
+                    "score": 1
+                },
+                {
+                    "key": "Common Isuues",
+                    "value": [
+                        
+                    ],
+                    "score": 2
+                },
+                {
+                    "key": "General Knowledge",
+                    "value": [
+                        
+                    ],
+                    "score": 3
+                }
+            ]
+        }
+    ]
+}
