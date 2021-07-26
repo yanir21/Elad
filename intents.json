@@ -10,14 +10,14 @@
 			"redirect": 0
 		},
 		{
-			"id": 2,
+			"id": 1,
 			"tag": "complete conversation",
 			"patterns": ["Bye", "See you later", "Goodbye"],
 			"output": ["Bye Bye!", "Have a nice day!", "I hope you enjoy my service, See you soon :)"],
 			"redirect": 0
 		},
 		{
-			"id": 3,
+			"id": 2,
 			"tag": "dbaas",
 			"patterns": [
 				"I have a problem in my db",
@@ -34,14 +34,14 @@
 			"output": "Please specify the technology of your cluster (Mongo/Postgres)",
 			"children": [
 				{
-					"id": 4,
+					"id": 6,
 					"tag": "postgres",
 					"patterns": ["Pgadmin support", "PGSQL", "I am having problems with postgres"],
 					"output": "Just use PGadmin",
 					"redirect": 5
 				},
 				{
-					"id": 5,
+					"id": 7,
 					"tag": "mongo",
 					"patterns": ["I want to migrate to mongo", "mongo", "MongoDB", "document", "mongoose"],
 					"output": "Just use Mongod"
@@ -49,7 +49,7 @@
 			]
 		},
 		{
-			"id": 6,
+			"id": 3,
 			"tag": "openshift",
 			"patterns": [
 				"I have a problem in ocp4",
@@ -68,9 +68,11 @@
 			]
 		},
 		{
+			"id": 4,
 			"tag": "general",
 			"patterns": ["My ticket is unanswered", "No one responds to my ticket", "Who should I call?", "Are you cash only?"],
-			"responses": ["We accept VISA, Mastercard and Paypal", "We accept most major credit cards, and Paypal"]
+			"responses": ["We accept VISA, Mastercard and Paypal", "We accept most major credit cards, and Paypal"],
+			"redirect": 0
 		},
 		{
 			"id": 5,
