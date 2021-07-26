@@ -1,5 +1,7 @@
 {
 	"id": 0,
+	"tag": "root",
+	"patterns": [],
 	"output": "I coudln't understand. lets try this again from the start",
 	"children": [
 		{
@@ -36,9 +38,8 @@
 				{
 					"id": 6,
 					"tag": "Postgres",
-					"patterns": ["Pgadmin support", "PGSQL", "I am having problems with postgres"],
-					"output": "Just use PGadmin",
-					"redirect": 5
+					"patterns": ["Pgadmin support", "PGSQL", "PSQL", "I am having problems with postgres", "Postgres"],
+					"output": "Just use PGadmin"
 				},
 				{
 					"id": 7,
@@ -55,18 +56,21 @@
 				"I have a problem in ocp4",
 				"openshift marganit is down",
 				"I want to connect my cluster to splunk",
-				"I can't rollout my pod"
+				"I can't rollout my pod",
+				"pod"
 			],
 			"output": "Please specify OCP version",
 			"children": [
 				{
 					"id": 8,
 					"tag": "OCP 4",
+					"output": "OCP 4 has a special soulution for it. check out this documentations:",
 					"patterns": ["I have a problem in ocp4", "openshift 4", "Openshift four"]
 				},
 				{
 					"id": 9,
 					"tag": "OCP 3.11",
+					"output": "OCP 3.11 dosn't support this. Sorry :(",
 					"patterns": ["I have a problem in ocp 3.11", "openshift 3.11", "Openshift three", "3"]
 				}
 			]
