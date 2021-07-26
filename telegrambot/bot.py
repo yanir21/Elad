@@ -3,6 +3,7 @@
 # This program is dedicated to the public domain under the CC0 license.
 import logging
 import json
+from typing import List
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import (
     Updater,
@@ -63,7 +64,6 @@ def continue_conv(update: Update, context: CallbackContext) -> int:
 
 def end(update: Update, context: CallbackContext) -> int:
     # print output
-    print("finish")
     return ConversationHandler.END
 
 
