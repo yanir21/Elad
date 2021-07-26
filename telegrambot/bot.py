@@ -35,8 +35,6 @@ logger = logging.getLogger(__name__)
 
 # Stages
 FIRST, BEGIN, DBAAS = range(3)
-# Callback data
-ONE, TWO, THREE, FOUR = range(4)
 
 f = open('../menu.json',)
 data = json.load(f)
@@ -46,20 +44,24 @@ for option in data['menu']:
 f.close()
 
 def start(update: Update, context: CallbackContext) -> int:
-    """Send message on `/start`."""
-    # Get user that sent /start and log his name
     user = update.message.from_user
     logger.info("User %s started the conversation.", user.first_name)
-    # Send message with text and appended InlineKeyboard
     update.message.reply_text("Hey " + user.first_name + " how can i help you? ")
-    # Tell ConversationHandler that we're in state `FIRST` now
-    # send to nlp - > nlp return id
-    # return id
+
     return BEGIN
 
 def begin(update: Update, context: CallbackContext) -> int:
-    #    update.message.reply_text(update.message.text)
-    # send to nlp - returns id
+    # send update.message.text to nlp - > nlp return id
+    # return id
+    
+    return DBAAS
+
+def stage(update: Update, context: CallbackContext) -> int:
+#     update.message.reply_text("output")
+#     if not leaf bulid inline key by children tags
+#     if redirect return redirect 
+#     if array of answers random them
+
     return FIRST
 
 def end(update: Update, context: CallbackContext) -> int:
