@@ -16,7 +16,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                     level=logging.INFO)
 
 logger = logging.getLogger(__name__)
-# 0       1           2        3         4         5       6       7        8
+# 0       1           2        3         4         5       6         7        8
 START,CONVERSATION, DBAAS, OPENSHIFT, GENERAL, JOKES, POSTGRES, MONGO, GENERAL = range(9)
 CAR, LICENSE_PLATE, PHOTO, DESCRIPTION = range(4)
 
@@ -35,15 +35,16 @@ def start(bot, update):
     # send to nlp - > nlp return id
     # return id
 
-#def licence_plate(bot, update, user_data):
-#    user_data['plate'] = update.message.text
-#    update.message.reply_text(
-#        'Thank You. Now, please send me a photo of your ID',
-#        reply_markup=ReplyKeyboardRemove())
-#    return PHOTO
+def licence_plate(bot, update, user_data):
+    user_data['plate'] = update.message.text
+    update.message.reply_text(
+        'Thank You. Now, please send me a photo of your ID',
+        reply_markup=ReplyKeyboardRemove())
+    return PHOTO
 
-def dbaas(bot, update):
-    print(update)
+def dbaas(bot, update, user_data):
+    user = update.message.from_user
+    print(user)
    # user_data['car'] = update.message.text
    # logger.info("%s: enters with a car? %s", user.first_name, update.message.text)
    # if update.message.text == 'Yes':
@@ -56,14 +57,14 @@ def dbaas(bot, update):
    #     return PHOTO
 
 
-#def photo(bot, update, user_data):
-#    user = update.message.from_user
-#    photo_file = bot.get_file(update.message.photo[-1].file_id)
-#    user_data['photo'] = photo_file
-#    logger.info("Photo of %s: %s", user.first_name, 'user_photo.jpg')
-#    update.message.reply_text('Gorgeous! What is the reason for entrance?')
+def photo(bot, update, user_data):
+    user = update.message.from_user
+    photo_file = bot.get_file(update.message.photo[-1].file_id)
+    user_data['photo'] = photo_file
+    logger.info("Photo of %s: %s", user.first_name, 'user_photo.jpg')
+    update.message.reply_text('Gorgeous! What is the reason for entrance?')
 
-#    return DESCRIPTION
+    return DESCRIPTION
 
 def cancel(bot, update):
     user = update.message.from_user
@@ -74,9 +75,9 @@ def cancel(bot, update):
     return ConversationHandler.END
 
 
-#def error(bot, update, error):
- #   """Log Errors caused by Updates."""
- #   logger.warning('Update "%s" caused error "%s"', update, error)
+def error(bot, update, error):
+    """Log Errors caused by Updates."""
+    logger.warning('Update "%s" caused error "%s"', update, error)
 
 
 def main():
@@ -90,19 +91,19 @@ def main():
         entry_points=[CommandHandler('start', start)],
 
         states={
-            DBAAS: [RegexHandler('^(Yes|No)$', dbaas, pass_user_data=True)]
+            DBAAS: [RegexHandler('^(Postgres|Mongo)$', dbaas, pass_user_data=True)],
           #  CAR: [RegexHandler('^(Yes|No)$', car, pass_user_data=True)],
- #           PHOTO: [MessageHandler(Filters.photo, photo, pass_user_data=True)],
+            PHOTO: [MessageHandler(Filters.photo, photo, pass_user_data=True)],
          #   DESCRIPTION: [MessageHandler(Filters.text, description, pass_user_data=True)],
         },
 
         fallbacks=[CommandHandler('cancel', cancel)]
-        )
+    )
 
     dp.add_handler(conv_handler)
 
     # log all errors
-  #  dp.add_error_handler(error)
+    #dp.add_error_handler(error)
 
     # Start the Bot
     print("Start Polling")

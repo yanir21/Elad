@@ -35,14 +35,14 @@
 			"children": [
 				{
 					"id": 6,
-					"tag": "postgres",
+					"tag": "Postgres",
 					"patterns": ["Pgadmin support", "PGSQL", "I am having problems with postgres"],
 					"output": "Just use PGadmin",
 					"redirect": 5
 				},
 				{
 					"id": 7,
-					"tag": "mongo",
+					"tag": "Mongo",
 					"patterns": ["I want to migrate to mongo", "mongo", "MongoDB", "document", "mongoose"],
 					"output": "Just use Mongod"
 				}
@@ -60,7 +60,7 @@
 			"output": "Please specify OCP version",
 			"children": [
 				{
-					"id": 7,
+					"id": 8,
 					"tag": "openshift",
 					"patterns": ["I have a problem in ocp4", "openshift 4", "Openshift four"]
 				},

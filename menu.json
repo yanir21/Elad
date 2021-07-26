@@ -47,7 +47,7 @@
         },
         {
             "key": "Info",
-            "output": "",
+            "output": "What would u like to know?",
             "value": [
                 {
                     "key": "Db",
