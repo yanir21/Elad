@@ -88,7 +88,7 @@
             "values": [
                 {
                     "key": "On Board",
-                    "output": "You're about to on board OCP, before that, what do you need to know?",
+                    "output": "Before deploying a DB, what do you need to know?",
                     "value": [
                         {
                             "key": "Introduction to dbaas",
