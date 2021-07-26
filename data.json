@@ -2,15 +2,19 @@
     "teams": [
         {
             "key": "openshift",
+            "output": "What are your intentions?",
             "value": [
                 {
                     "key": "On Board",
+                    "output": "You're about to on board OCP, before that, what do you need to know?",
                     "value": [
                         {
                             "key": "Introduction to Openshift",
+                            "output": "",
                             "value": [
                                 {
                                     "key": "Why To Use Openshift",
+                                    "output": "",
                                     "value": {
                                         "info": "Using Openshift platform helps you \n 1. Reduce Significantly the development procedure time \n 2. More convinent way to run multi-service application architecture \n 3. Integration with great devops tools for automated piplines.",
                                         "links": [
@@ -21,6 +25,7 @@
                                 },
                                 {
                                     "key": "What is Openshift",
+                                    "output": "",
                                     "value": {
                                         "info": "Openshift is container as a service platform that helps you mange your containers operations. \n Working with docker? thinking of change your architecture to continer based? Openshift is for you.",
                                         "links": [
@@ -31,6 +36,7 @@
                                 },
                                 {
                                     "key": "Prerequisites",
+                                    "output": "",
                                     "value": [
                                         
                                     ],
@@ -41,6 +47,7 @@
                         },
                         {
                             "key": "Creating a Project",
+                            "output": "",
                             "value": [
                                 
                             ],
@@ -48,6 +55,7 @@
                         },
                         {
                             "key": "Request Resources",
+                            "output": "",
                             "value": [
                                 
                             ],
@@ -58,6 +66,7 @@
                 },
                 {
                     "key": "Common Isuues",
+                    "output": "",
                     "value": [
                         
                     ],
@@ -65,6 +74,7 @@
                 },
                 {
                     "key": "General Knowledge",
+                    "output": "",
                     "value": [
                         
                     ],

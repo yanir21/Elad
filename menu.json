@@ -1,13 +1,16 @@
 {
     "menu": [
         {
-            "key": "support",
+            "key": "Support",
+            "output": "What do u need?",
             "value": [
                 {
                     "key": "dev",
+                    "output": "Choose:",
                     "value": [
                         {
                             "key": "Creating a Project",
+                            "output": "",
                             "value": [
                                 
                             ],
@@ -15,6 +18,7 @@
                         },
                         {
                             "key": "Request Resources",
+                            "output": "",
                             "value": [
                                 
                             ],
@@ -25,6 +29,7 @@
                 },
                 {
                     "key": "Common Isuues",
+                    "output": "",
                     "value": [
                         
                     ],
@@ -32,6 +37,7 @@
                 },
                 {
                     "key": "Service Issue",
+                    "output": "",
                     "value": [
                         
                     ],
@@ -41,12 +47,15 @@
         },
         {
             "key": "Info",
+            "output": "",
             "value": [
                 {
                     "key": "Db",
+                    "output": "",
                     "value": [
                         {
                             "key": "Creating a Project",
+                            "output": "",
                             "value": [
                                 
                             ],
@@ -54,6 +63,7 @@
                         },
                         {
                             "key": "Request Resources",
+                            "output": "",
                             "value": [
                                 
                             ],
@@ -64,6 +74,7 @@
                 },
                 {
                     "key": "OCP",
+                    "output": "",
                     "value": [
                         
                     ],
@@ -71,6 +82,7 @@
                 },
                 {
                     "key": "Other",
+                    "output": "",
                     "value": [
                         
                     ],

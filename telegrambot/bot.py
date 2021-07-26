@@ -58,9 +58,10 @@ def start(update: Update, context: CallbackContext) -> int:
     # and a string as callback_data
     # The keyboard is a list of button rows, where each row is in turn
     # a list (hence `[[...]]`).
-        options = [] 
+    options = [] 
     for option in data['menu']:
-        options.append(InlineKeyboardButton(option.key, callback_data=option.key))
+        print(option['key'])
+        options.append(InlineKeyboardButton(option['key'], callback_data=option['key']))
     keyboard = [
         options
     ]
