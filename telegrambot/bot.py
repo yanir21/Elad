@@ -1,18 +1,6 @@
 #!/usr/bin/env python
 # pylint: disable=C0116,W0613
 # This program is dedicated to the public domain under the CC0 license.
-
-"""Simple inline keyboard bot with multiple CallbackQueryHandlers.
-This Bot uses the Updater class to handle the bot.
-First, a few callback functions are defined as callback query handler. Then, those functions are
-passed to the Dispatcher and registered at their respective places.
-Then, the bot is started and runs until we press Ctrl-C on the command line.
-Usage:
-Example of a bot that uses inline keyboard that has multiple CallbackQueryHandlers arranged in a
-ConversationHandler.
-Send /start to initiate the conversation.
-Press Ctrl-C on the command line to stop the bot.
-"""
 import logging
 import json
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
@@ -34,14 +22,19 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Stages
-FIRST, BEGIN, DBAAS = range(3)
+BEGIN, END, CONTINUE = range(3)
 
-f = open('../menu.json',)
-data = json.load(f)
-options = [] 
-for option in data['menu']:
-    options.append(InlineKeyboardButton(option['key'], callback_data=option['key']))
-f.close()
+def build_keyboard(current_list: List[int]) -> InlineKeyboardMarkup:
+    f = open('../intents.json',)
+    data = json.load(f)
+    options = [] 
+    for option in data['menu']:
+       options.append(InlineKeyboardButton(option['key'], callback_data=option))
+    f.close()
+    """Helper function to build the next inline keyboard."""
+    return InlineKeyboardMarkup.from_column(
+        [InlineKeyboardButton(str(i), callback_data=(i, current_list)) for i in range(1, 6)]
+    )
 
 def start(update: Update, context: CallbackContext) -> int:
     user = update.message.from_user
@@ -53,24 +46,24 @@ def start(update: Update, context: CallbackContext) -> int:
 def begin(update: Update, context: CallbackContext) -> int:
     # send update.message.text to nlp - > nlp return id
     # return id
-    
-    return DBAAS
+    print(update.message.text)
 
-def stage(update: Update, context: CallbackContext) -> int:
-#     update.message.reply_text("output")
+    return CONTINUE
+
+def continue_conv(update: Update, context: CallbackContext) -> int:
+    output = " Question "
+    update.message.reply_text(output)
 #     if not leaf bulid inline key by children tags
 #     if redirect return redirect 
 #     if array of answers random them
-
-    return FIRST
+    if(update.message.text == 1) :
+        return CONTINUE
+    else:
+        return END
 
 def end(update: Update, context: CallbackContext) -> int:
-    """Returns `ConversationHandler.END`, which tells the
-    ConversationHandler that the conversation is over.
-    """
-    query = update.callback_query
-    query.answer()
-    query.edit_message_text(text="See you next time!")
+    # print output
+    print("finish")
     return ConversationHandler.END
 
 
@@ -88,6 +81,12 @@ def main() -> None:
         states={
             BEGIN: [
                 MessageHandler(Filters.text & ~Filters.command, begin)
+            ],
+            END: [
+                MessageHandler(Filters.text & ~Filters.command, end)
+            ],
+            CONTINUE: [
+                MessageHandler(Filters.text & ~Filters.command, continue_conv)
             ]
         },
         fallbacks=[CommandHandler('start', start)],
