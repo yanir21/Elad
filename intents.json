@@ -60,11 +60,15 @@
 			"output": "Please specify OCP version",
 			"children": [
 				{
-					"id": 7,
-					"tag": "openshift",
+					"id": 8,
+					"tag": "OCP 4",
 					"patterns": ["I have a problem in ocp4", "openshift 4", "Openshift four"]
 				},
-				{}
+				{
+					"id": 9,
+					"tag": "OCP 3.11",
+					"patterns": ["I have a problem in ocp 3.11", "openshift 3.11", "Openshift three", "3"]
+				}
 			]
 		},
 		{
