@@ -81,6 +81,80 @@
                     "score": 3
                 }
             ]
+        },
+        {
+            "key": "dbaas",
+            "output": "What are your intentions?",
+            "values": [
+                {
+                    "key": "On Board",
+                    "output": "You're about to on board OCP, before that, what do you need to know?",
+                    "value": [
+                        {
+                            "key": "Introduction to dbaas",
+                            "value": [
+                                {
+                                    "key": "about dbaas",
+                                    "value": {
+                                        "info": "Database as a service offer fully monitored, managed, scaled databases such as mongodb and postgresql. \n offering high availability, backup orchestration and point-in-time-recovery (PITR).\n For more information visit the product page at the support"
+                                    },
+                                    "score": 1
+                                },
+                                {
+                                    "key": "about mongodb",
+                                    "value": {
+                                        "info": "MongoDB is a document-oriented NoSQL database used for high volume data storage.\n MongoDB makes use of collections and documents and supports various forms of data",
+                                        "links": [
+                                            "https://docs.mongodb.com/manual/introduction/"
+                                        ]
+                                    },
+                                    "score": 2
+                                },
+                                {
+                                    "key": "about postgresql",
+                                    "value": {
+                                        "info": "Postgres is a relational database management system (RDBMS) emphasizing extensibility and SQL compliance.\n PostgreSQL is an object-relational SQL database that employs indexable JSON, publish and subscribe functions and drivers.",
+                                        "links": [
+                                            "https://www.postgresql.org/about/"
+                                        ]
+                                    },
+                                    "score": 3
+                                }
+                            ],
+                            "score": 1
+                        },
+                        {
+                            "key": "Creating a Project",
+                            "value": [
+                                
+                            ],
+                            "score": 2
+                        },
+                        {
+                            "key": "Request Resources",
+                            "value": [
+                                
+                            ],
+                            "score": 3
+                        }
+                    ],
+                    "score": 1
+                },
+                {
+                    "key": "Common Isuues",
+                    "value": [
+                        
+                    ],
+                    "score": 2
+                },
+                {
+                    "key": "General Knowledge",
+                    "value": [
+                        
+                    ],
+                    "score": 3
+                }
+            ]
         }
     ]
 }
