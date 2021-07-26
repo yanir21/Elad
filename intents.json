@@ -4,15 +4,17 @@
 	"children": [
 		{
 			"id": 1,
-			"tag": "greeting",
-			"patterns": ["Hi", "Hey", "How are you", "Is anyone there?", "Hello", "Good day"],
-			"responses": ["Im good, how are you today?", "I'm Great, and you?"]
+			"tag": "start conversation",
+			"patterns": ["Hi", "Hey", "How are you", "Is anyone there?", "Hello", "Good day", "what's up?", "my name is"],
+			"output": ["Im good, how can i help you?", "I'm Great, how can i help you?"],
+			"redirect": 0
 		},
 		{
 			"id": 2,
-			"tag": "goodbye",
+			"tag": "complete conversation",
 			"patterns": ["Bye", "See you later", "Goodbye"],
-			"responses": ["Bye Bye!", "Have a nice day!", "Good luck!"]
+			"output": ["Bye Bye!", "Have a nice day!", "I hope you enjoy my service, See you soon :)"],
+			"redirect": 0
 		},
 		{
 			"id": 3,
@@ -71,12 +73,14 @@
 			"responses": ["We accept VISA, Mastercard and Paypal", "We accept most major credit cards, and Paypal"]
 		},
 		{
-			"tag": "funny",
+			"id": 5,
+			"tag": "jokes",
 			"patterns": ["Tell me a joke!", "Tell me something funny!", "Do you know a joke?"],
-			"responses": [
+			"output": [
 				"Why did the hipster burn his mouth? He drank the coffee before it was cool.",
 				"What did the buffalo say when his son left for college? Bison."
-			]
+			],
+			"redirect": 0
 		}
 	]
 }
