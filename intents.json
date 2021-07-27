@@ -39,7 +39,43 @@
 					"id": 6,
 					"tag": "Postgres",
 					"patterns": ["Pgadmin support", "PGSQL", "PSQL", "I am having problems with postgres", "Postgres"],
-					"output": "Just use PGadmin"
+					"output": "Just use PGadmin",
+					"children": [
+						{
+							"id": 10,
+							"tag": "Connectivity problem",
+							"patterns": ["Connect", "can't connect", "my db", "problem connecting"],
+							"output": "Is VPN On? ",
+							"children": [
+								{
+									"id": 11,
+									"tag": "VPN off",
+									"patterns": ["VPN off"],
+									"output": "Turn your VPN on and try it again"
+								},
+								{
+									"id": 12,
+									"tag": "VPN on",
+									"patterns": ["VPN on"],
+									"output": "Is the connection string is in proper format?",
+									"children": [
+										{
+											"id": 13,
+											"tag": "Yes, my connection string is okay",
+											"patterns": ["connection string", "connection in proper form"],
+											"output": "Please Contact Dbaas team"
+										},
+										{
+											"id": 14,
+											"tag": "No, my connection string is not okay",
+											"patterns": ["connection string"],
+											"output": "Please fix the connection string and try again"
+										}
+									]									
+								}
+							]
+						}
+					]
 				},
 				{
 					"id": 7,
