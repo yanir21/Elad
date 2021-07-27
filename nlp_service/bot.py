@@ -3,6 +3,9 @@
 # This program is dedicated to the public domain under the CC0 license.
 import logging
 import json
+from typing import List
+from chat import akinator, init_models
+from format_intents import get_node_by_key
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import (
     Updater,
@@ -24,9 +27,13 @@ logger = logging.getLogger(__name__)
 # Stages
 BEGIN, END, CONTINUE = range(3)
 
+last_node = None
+last_message = None
+f = open('intents.json','r')
+data = json.load(f)
+init_models(data)
+
 def build_keyboard(current_list: List[int]) -> InlineKeyboardMarkup:
-    f = open('../intents.json',)
-    data = json.load(f)
     options = [] 
     for option in data['menu']:
        options.append(InlineKeyboardButton(option['key'], callback_data=option))
@@ -46,13 +53,24 @@ def start(update: Update, context: CallbackContext) -> int:
 def begin(update: Update, context: CallbackContext) -> int:
     # send update.message.text to nlp - > nlp return id
     # return id
-    print(update.message.text)
-
-    return CONTINUE
+    global last_message, lowest_node
+    last_message = update.message.text
+    
+    lowest_node = akinator(last_message, data)
+    update.message.reply_text(lowest_node['output'])
+    if "children" in lowest_node:
+        return CONTINUE
+    return END
 
 def continue_conv(update: Update, context: CallbackContext) -> int:
-    output = " Question "
-    update.message.reply_text(output)
+    global last_message, lowest_node
+    last_message += " " + update.message.text
+    lowest_node = akinator(last_message, data)
+    update.message.reply_text(lowest_node['output'])
+    if "children" in lowest_node:
+        return CONTINUE
+    return END
+
 #     if not leaf bulid inline key by children tags
 #     if redirect return redirect 
 #     if array of answers random them
@@ -63,7 +81,7 @@ def continue_conv(update: Update, context: CallbackContext) -> int:
 
 def end(update: Update, context: CallbackContext) -> int:
     # print output
-    print("finish")
+    update.message.reply_text("How helpful was I?")
     return ConversationHandler.END
 
 
@@ -82,11 +100,11 @@ def main() -> None:
             BEGIN: [
                 MessageHandler(Filters.text & ~Filters.command, begin)
             ],
+            CONTINUE: [
+                MessageHandler(Filters.text & ~Filters.command, continue_conv, 999)
+            ],
             END: [
                 MessageHandler(Filters.text & ~Filters.command, end)
-            ],
-            CONTINUE: [
-                MessageHandler(Filters.text & ~Filters.command, continue_conv)
             ]
         },
         fallbacks=[CommandHandler('start', start)],

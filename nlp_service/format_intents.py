@@ -1,47 +1,3 @@
-
-bla = {
-    "id": 1,
-    "tag": "grandfather",
-    "patterns": [
-        "balas",
-        "harmatz"
-    ],
-    "children": [
-         {
-            "id": 55,
-            "tag": "uncle-girl",
-            "patterns": [
-                "uncle-girl"
-            ],
-             "children": [
-                {
-                    "id": 5,
-                    "tag": "idiot",
-                    "patterns": [
-                        "bla"
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 85,
-            "tag": "uncle-girl",
-            "patterns": [
-                "uncle-girl"
-            ],
-             "children": [
-                {
-                    "id": 9,
-                    "tag": "idiot",
-                    "patterns": [
-                        "bla"
-                    ]
-                }
-            ]
-        }
-    ]
-}
-
 def format_node_patterns(node):
     if "children" in node:
         patterns = []
@@ -71,7 +27,7 @@ def get_node_by_key(node, key, value, booli):
 def searchTree(element, key, value):
     if element[key] == value:
         return element
-    elif element["children"]:
+    elif "children" in element and element["children"]:
         result = None
         for i in range(len(element["children"])):
             if not result:
