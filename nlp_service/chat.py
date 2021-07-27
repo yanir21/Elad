@@ -85,10 +85,3 @@ def akinator(sentence, root_id = 0):
 
 tree = init()
 print(akinator("I have a problem in my postgresql db", 0, tree))
-
-
-
-  
-    
-
-  
