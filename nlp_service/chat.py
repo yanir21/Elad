@@ -74,11 +74,7 @@ def akinator(sentence, root):
     except:
       break
 
-  return lowest_node
+  return lowest_id
 
-
-
-  
-    
-
-  
+tree = init()
+print(akinator("I have a problem in my postgresql db", 0, tree))

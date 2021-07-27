@@ -8,32 +8,34 @@
 			"id": 1,
 			"tag": "start conversation",
 			"patterns": ["Hi", "Hey", "How are you", "Is anyone there?", "Hello", "Good day", "what's up?", "my name is"],
-			"output": ["Im good, how can i help you?", "I'm Great, how can i help you?"],
+			"output": "how can i help you?",
 			"redirect": 0
 		},
 		{
 			"id": 1,
 			"tag": "complete conversation",
 			"patterns": ["Bye", "See you later", "Goodbye"],
-			"output": ["Bye Bye!", "Have a nice day!", "I hope you enjoy my service, See you soon :)"],
+			"output":  "I hope you enjoy my service, See you soon :)",
 			"redirect": 0
 		},
 		{
 			"id": 2,
 			"tag": "dbaas",
 			"patterns": [
-				"I have a problem in my db",
+				"my db",
 				"there are too many sessions",
 				"I can't connect to my db",
 				"My queries dont work",
-				"Can you offer me visualization tools?",
-				"I want to migrate to mongo",
-				"I am having problems with postgres",
-				"Pgadmin wont let me connect",
-				"I want to switchover to another site",
-				"I want to create a new cluster"
+				"database",
+				"visualization tools?",
+				"mongo", 
+				"pgsql",
+				"postgres",
+				"Pgadmin",
+				"switchover",
+				"create a new cluster"
 			],
-			"output": "Please specify the technology of your cluster (Mongo/Postgres)",
+			"output": "Please specify the technology of your cluster:",
 			"children": [
 				{
 					"id": 6,
@@ -80,7 +82,7 @@
 				{
 					"id": 7,
 					"tag": "Mongo",
-					"patterns": ["I want to migrate to mongo", "mongo", "MongoDB", "document", "mongoose"],
+					"patterns": ["I want to migrate to mongo", "mongo", "MongoDB", "document", "mongoose", "collection"],
 					"output": "Just use Mongod"
 				}
 			]
@@ -89,7 +91,7 @@
 			"id": 3,
 			"tag": "openshift",
 			"patterns": [
-				"I have a problem in ocp4",
+				"ocp4",
 				"openshift marganit is down",
 				"I want to connect my cluster to splunk",
 				"I can't rollout my pod",
@@ -101,7 +103,51 @@
 					"id": 8,
 					"tag": "OCP 4",
 					"output": "OCP 4 has a special soulution for it. check out this documentations:",
-					"patterns": ["I have a problem in ocp4", "openshift 4", "Openshift four"]
+					"patterns": ["I have a problem in ocp4", "openshift 4", "Openshift four"],
+					"children":  [
+						{
+							"id": 15,
+							"tag": "Deploy",
+							"output": "deploy issue?",
+							"patterns": ["try to rollout the deploymnet", "deploy openshift 4", "rollout pods"],
+							"children":  [
+								{
+									"id": 18,
+									"tag": "",
+									"output": "",
+									"patterns": ["I have a problem in ocp4", "openshift 4", "Openshift four"],
+									"children":  [
+										{
+											"id": 19,
+											"tag": "OCP 4",
+											"output": "OCP 4 has a special soulution for it. check out this documentations:",
+											"patterns": ["I have a problem in ocp4", "openshift 4", "Openshift four"]
+										}
+									]
+								},
+								{
+									"id": 20,
+									"tag": "",
+									"output": "",
+									"patterns": ["I have a problem in ocp4", "openshift 4", "Openshift four"],
+									"children":  [
+										{
+											"id": 21,
+											"tag": "OCP 4",
+											"output": "OCP 4 has a special soulution for it. check out this documentations:",
+											"patterns": ["I have a problem in ocp4", "openshift 4", "Openshift four"]
+										},
+										{
+											"id": 22,
+											"tag": "OCP 4",
+											"output": "OCP 4 has a special soulution for it. check out this documentations:",
+											"patterns": ["I have a problem in ocp4", "openshift 4", "Openshift four"]
+										}
+									]
+								}
+							]
+						}
+					]
 				},
 				{
 					"id": 9,
