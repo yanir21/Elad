@@ -114,7 +114,7 @@
 								{
 									"id": 18,
 									"tag": "",
-									"output": "",
+									"output": "balas",
 									"patterns": ["I have a problem in ocp4", "openshift 4", "Openshift four"],
 									"children":  [
 										{
@@ -128,19 +128,19 @@
 								{
 									"id": 20,
 									"tag": "",
-									"output": "",
+									"output": "halas",
 									"patterns": ["I have a problem in ocp4", "openshift 4", "Openshift four"],
 									"children":  [
 										{
 											"id": 21,
 											"tag": "OCP 4",
-											"output": "OCP 4 has a special soulution for it. check out this documentations:",
+											"output": "https://google.com",
 											"patterns": ["I have a problem in ocp4", "openshift 4", "Openshift four"]
 										},
 										{
 											"id": 22,
 											"tag": "OCP 4",
-											"output": "OCP 4 has a special soulution for it. check out this documentations:",
+											"output": "https://img.haarets.co.il/img/1.2402857/1656588037.png?precrop=636,423,x0,y0&height=798&width=1200",
 											"patterns": ["I have a problem in ocp4", "openshift 4", "Openshift four"]
 										}
 									]
