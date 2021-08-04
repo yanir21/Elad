@@ -8,81 +8,43 @@
 			"id": 1,
 			"tag": "start conversation",
 			"patterns": ["Hi", "Hey", "How are you", "Is anyone there?", "Hello", "Good day", "what's up?", "my name is"],
-			"output": "how can i help you?",
+			"output": "How can i help you?",
 			"redirect": 0
 		},
 		{
 			"id": 1,
 			"tag": "complete conversation",
 			"patterns": ["Bye", "See you later", "Goodbye"],
-			"output":  "I hope you enjoy my service, See you soon :)",
+			"output": ["Bye Bye!", "Have a nice day!", "I hope you enjoy my service, See you soon :)"],
 			"redirect": 0
 		},
 		{
 			"id": 2,
 			"tag": "dbaas",
 			"patterns": [
-				"my db",
+				"I have a problem in my db",
 				"there are too many sessions",
 				"I can't connect to my db",
 				"My queries dont work",
-				"database",
-				"visualization tools?",
-				"mongo", 
-				"pgsql",
-				"postgres",
-				"Pgadmin",
-				"switchover",
-				"create a new cluster"
+				"Can you offer me visualization tools?",
+				"I want to migrate to mongo",
+				"I am having problems with postgres",
+				"Pgadmin wont let me connect",
+				"I want to switchover to another site",
+				"I want to create a new cluster"
 			],
-			"output": "Please specify the technology of your cluster:",
+			"output": "Please specify the technology of your cluster (Mongo/Postgres)",
 			"children": [
 				{
 					"id": 6,
 					"tag": "Postgres",
-					"patterns": ["Pgadmin support", "PGSQL", "PSQL", "I am having problems with postgres", "Postgres"],
-					"output": "Just use PGadmin",
-					"children": [
-						{
-							"id": 10,
-							"tag": "Connectivity problem",
-							"patterns": ["Connect", "can't connect", "my db", "problem connecting"],
-							"output": "Is VPN On? ",
-							"children": [
-								{
-									"id": 11,
-									"tag": "VPN off",
-									"patterns": ["VPN off"],
-									"output": "Turn your VPN on and try it again"
-								},
-								{
-									"id": 12,
-									"tag": "VPN on",
-									"patterns": ["VPN on"],
-									"output": "Is the connection string is in proper format?",
-									"children": [
-										{
-											"id": 13,
-											"tag": "Yes, my connection string is okay",
-											"patterns": ["connection string", "connection in proper form"],
-											"output": "Please Contact Dbaas team"
-										},
-										{
-											"id": 14,
-											"tag": "No, my connection string is not okay",
-											"patterns": ["connection string"],
-											"output": "Please fix the connection string and try again"
-										}
-									]									
-								}
-							]
-						}
-					]
+					"patterns": ["Pgadmin support", "PGSQL", "PSQL", " posgres", "Postgres"],
+					"output": "PostgreSQL has a documentation just for this: https://www.postgresql.help.com"
 				},
 				{
 					"id": 7,
 					"tag": "Mongo",
-					"patterns": ["I want to migrate to mongo", "mongo", "MongoDB", "document", "mongoose", "collection"],
+					"patterns": ["migrate mongo", "mongo", "MongoDB", "document", "mongoose"],
 					"output": "Just use Mongod"
 				}
 			]
@@ -91,8 +53,9 @@
 			"id": 3,
 			"tag": "openshift",
 			"patterns": [
-				"ocp4",
+				"I have a problem in ocp4",
 				"openshift marganit is down",
+				"deployment",
 				"I want to connect my cluster to splunk",
 				"I can't rollout my pod",
 				"pod"
@@ -102,52 +65,8 @@
 				{
 					"id": 8,
 					"tag": "OCP 4",
-					"output": "OCP 4 has a special soulution for it. check out this documentations:",
-					"patterns": ["I have a problem in ocp4", "openshift 4", "Openshift four"],
-					"children":  [
-						{
-							"id": 15,
-							"tag": "Deploy",
-							"output": "deploy issue?",
-							"patterns": ["try to rollout the deploymnet", "deploy openshift 4", "rollout pods"],
-							"children":  [
-								{
-									"id": 18,
-									"tag": "",
-									"output": "balas",
-									"patterns": ["I have a problem in ocp4", "openshift 4", "Openshift four"],
-									"children":  [
-										{
-											"id": 19,
-											"tag": "OCP 4",
-											"output": "OCP 4 has a special soulution for it. check out this documentations:",
-											"patterns": ["I have a problem in ocp4", "openshift 4", "Openshift four"]
-										}
-									]
-								},
-								{
-									"id": 20,
-									"tag": "",
-									"output": "halas",
-									"patterns": ["I have a problem in ocp4", "openshift 4", "Openshift four"],
-									"children":  [
-										{
-											"id": 21,
-											"tag": "OCP 4",
-											"output": "https://google.com",
-											"patterns": ["I have a problem in ocp4", "openshift 4", "Openshift four"]
-										},
-										{
-											"id": 22,
-											"tag": "OCP 4",
-											"output": "https://img.haarets.co.il/img/1.2402857/1656588037.png?precrop=636,423,x0,y0&height=798&width=1200",
-											"patterns": ["I have a problem in ocp4", "openshift 4", "Openshift four"]
-										}
-									]
-								}
-							]
-						}
-					]
+					"output": "OCP 4 has a special solution for it. check out this documentations:",
+					"patterns": ["I have a problem in ocp4", "openshift 4", "Openshift four"]
 				},
 				{
 					"id": 9,
@@ -168,11 +87,7 @@
 			"id": 5,
 			"tag": "jokes",
 			"patterns": ["Tell me a joke!", "Tell me something funny!", "Do you know a joke?"],
-			"output": [
-				"Why did the hipster burn his mouth? He drank the coffee before it was cool.",
-				"What did the buffalo say when his son left for college? Bison."
-			],
-			"redirect": 0
+			"output": "What music does a stack like? pop."
 		}
 	]
 }

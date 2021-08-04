@@ -25,7 +25,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Stages
-BEGIN, END, CONTINUE = range(3)
+BEGIN, END,END_QUESTION, CONTINUE = range(4)
 
 last_node = None
 last_message = None
@@ -66,24 +66,32 @@ def continue_conv(update: Update, context: CallbackContext) -> int:
     global last_message, lowest_node
     last_message += " " + update.message.text
     lowest_node = akinator(last_message, data)
-    update.message.reply_text(lowest_node['output'])
-    if "children" in lowest_node:
+    end_question = "was this helpful?"
+    is_leaf = "children" not in lowest_node
+    update.message.reply_text(f"{lowest_node['output']} \n {end_question if is_leaf else ''}")
+    if not is_leaf:
         return CONTINUE
-    return END
+    
+    return END_QUESTION
 
-#     if not leaf bulid inline key by children tags
-#     if redirect return redirect 
-#     if array of answers random them
-    if(update.message.text == 1) :
-        return CONTINUE
+def end_question(update: Update, context: CallbackContext) -> int:
+    # print output
+    global last_node, last_message
+    
+    if update.message.text == 'no':
+        last_node = None
+        last_message = None
+        update.message.reply_text("Lets start over... how can I help?")
+        return BEGIN
     else:
-        return END
+        update.message.reply_text("Noted, Goodbye for now!")
+        return ConversationHandler.END
 
 def end(update: Update, context: CallbackContext) -> int:
     # print output
-    update.message.reply_text("How helpful was I?")
-    return ConversationHandler.END
+    update.message.reply_text("Goodbye for now!")
 
+    return ConversationHandler.END
 
 def main() -> None:
     """Run the bot."""
@@ -102,6 +110,9 @@ def main() -> None:
             ],
             CONTINUE: [
                 MessageHandler(Filters.text & ~Filters.command, continue_conv, 999)
+            ],
+            END_QUESTION: [
+                MessageHandler(Filters.text & ~Filters.command, end_question)
             ],
             END: [
                 MessageHandler(Filters.text & ~Filters.command, end)
